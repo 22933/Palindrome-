@@ -1,18 +1,17 @@
 def is_palindrome(number):
-    original = number
-    reversed_num = 0
-
-    while number > 0:
-        digit = number % 10
-        reversed_num = reversed_num * 10 + digit
-        number //= 10
-
-    return original == reversed_num
+    number_str = str(number)
+    
+    # Check if the number has exactly 12 digits
+    if len(number_str) != 12:
+        return False, "The number is not 12 digits long."
+    
+    # Check for palindrome
+    if number_str == number_str[::-1]:
+        return True, f"{number} is a 12-digit palindrome."
+    else:
+        return False, f"{number} is a 12-digit number but not a palindrome."
 
 # Example usage
-num = int(input("Enter a number: "))
-if is_palindrome(num):
-    print(f"{num} is a palindrome.")
-else:
-    print(f"{num} is not a palindrome.")
-Enter number=1331
+num = 123456654321
+result, message = is_palindrome(num)
+print(message)
